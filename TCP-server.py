@@ -27,8 +27,10 @@ while True:
     while True:
         data = connection.recv(16)
         message = data.decode('UTF-8')
-        print(data.decode('UTF-8'))
+        print(message)
         if message.startswith('helloiam'):
+            now = datetime.now()
+            dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
             result = filemanager.search_string_in_file(file_name, message.split()[-1])
             print(result)
             if len(result) != 0:
@@ -39,14 +41,11 @@ while True:
                 # Sending response to client
                 connection.sendall(str.encode('Usuario inexistente'))
                 with open('log.txt', 'a') as f:
-                    f.write('Usuario inexistente')
+                    f.write('Usuario inexistente' + ' ' + dt_string + ' ' + client_address[0] + ' 19876' + ' TCP')
                     f.write('\n')
                     sys.exit()
         else:
-            now = datetime.now()
-            dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
             with open('log.txt', 'a') as f:
-                f.write(message)
-                f.write(message + ' ' + dt_string + ' ' + client_address[0] + ' TCP')
+                f.write(message + ' ' + dt_string + ' ' + client_address[0] + ' 19876' + ' TCP')
                 f.write('\n')
                 sys.exit()

@@ -2,7 +2,7 @@ import socket
 import sys
 
 TCPserverAddressPort   = ('127.0.0.1', 19876)
-UDPserverAddressPort   = ('127.0.0.2', 19875)
+UDPserverAddressPort   = ('127.0.0.1', 19875)
 bufferSize          = 1024
 
 # Create a UDP socket at client side
@@ -20,7 +20,7 @@ if (connectionType == 'UDP'):
     )
 else:
     TCPClientSocket.connect(TCPserverAddressPort)
-    TCPClientSocket.sendall(str.encode(user))
+    TCPClientSocket.sendall(user.encode('utf-8'))
 
 while (True):
 

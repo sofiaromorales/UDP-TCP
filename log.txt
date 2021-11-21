@@ -1,4 +1,3 @@
-graias
-Usuario inexistente
-Gracias 16/11/2021 14:51:07  127.0.0.1 UDP
-bumbumbumbumbumbum 16/11/2021 14:52:56 127.0.0.1 TCP
+Aquí, sin dejar de trabajar, pasó los últimos días de su vida antes de dispararse en el pecho el 27 de julio 19/11/2021 16:01:07 127.0.0.1 19876 TCP
+murió dos días más tarde 19/11/2021 16:11:32 127.0.0.1 19875 UDP
+

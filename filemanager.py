@@ -1,5 +1,5 @@
 def search_string_in_file(file_name, string_to_search):
-    print('searching...' + string_to_search)
+    print('searching... ' + string_to_search)
     line_number = 0
     list_of_results = []
     # Open the file in read only mode

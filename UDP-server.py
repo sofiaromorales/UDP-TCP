@@ -24,14 +24,15 @@ print('UDP server up and listening')
 
 while(True):
 
-    bytesAddressPair = UDPServerSocket.recvfrom(bufferSize)
+    bytesAddressPair = UDPServerSocket.recvfrom(4096)
     message = bytesAddressPair[0]
     address = bytesAddressPair[1]
     print(address)
 
-    clientMsg = message.decode('UTF-8')
+    clientMsg = message.decode('utf-8')
     print(clientMsg)
-
+    now = datetime.now()
+    dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
     if clientMsg.startswith('helloiam'):
         # Looking name in file
         result = filemanager.search_string_in_file(file_name, clientMsg.split()[-1])
@@ -49,13 +50,11 @@ while(True):
                 address
             )
             with open('log.txt', 'a') as f:
-                f.write('Usuario inexistente')
+                f.write('Usuario inexistente' + ' ' + dt_string + ' ' + address[0] + ' ' + str(localPort) + ' UDP')
                 f.write('\n')
             sys.exit()
 
     else:
-        now = datetime.now()
-        dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
         with open('log.txt', 'a') as f:
-            f.write(clientMsg + ' ' + dt_string + ' ' + address[0] + ' UDP')
+            f.write(clientMsg + ' ' + dt_string + ' ' + address[0] + ' ' + str(localPort) + ' UDP')
             f.write('\n')
