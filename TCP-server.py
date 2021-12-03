@@ -21,8 +21,6 @@ while True:
     print('waiting for a connection')
     connection, client_address = sock.accept()
 
-    print('connection from', client_address)
-
     # Receive the data in small chunks and retransmit it
     while True:
         data = connection.recv(16)
